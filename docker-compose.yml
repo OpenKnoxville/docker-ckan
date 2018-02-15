@@ -12,9 +12,7 @@ services:
     volumes:
       - ./letsencrypt/certs:/etc/nginx/certs
       - ./letsencrypt/www:/var/www/letsencrypt
-      - ./server_config/nginx:/etc/nginx/conf.d
-    depends_on:
-      - ckan
+      - ./nginx_conf:/etc/nginx/conf.d
 
   ckan:
     container_name: ckan
