@@ -9,3 +9,7 @@ src/*
 ._*
 .Spotlight-V100
 .Trashes
+
+backup_scripts/backups
+letsencrypt
+keypair

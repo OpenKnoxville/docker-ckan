@@ -2,6 +2,20 @@ version: "3"
 
 services:
 
+  nginx:
+    restart: always
+    image: nginx
+    container_name: ckan_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./letsencrypt/certs:/etc/nginx/certs
+      - ./letsencrypt/www:/var/www/letsencrypt
+      - ./server_config/nginx:/etc/nginx/conf.d
+    depends_on:
+      - ckan
+
   ckan:
     container_name: ckan
     build:
@@ -46,6 +60,13 @@ services:
   redis:
     container_name: redis
     image: redis:alpine
+
+  letsencrypt:
+    build: ./certbot
+    command: /bin/true
+    volumes:
+      - ./letsencrypt/certs:/etc/letsencrypt
+      - ./letsencrypt/www:/var/www/letsencrypt
 
 volumes:
   ckan_storage:
