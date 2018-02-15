@@ -7,7 +7,7 @@ From https://devsidestory.com/lets-encrypt-with-docker/
 #. generate the certiciate locally:
 
 ```
-docker-compose run --rm letsencrypt letsencrypt certonly --webroot --email info@openknoxville.org --agree-tos -w /var/www/letsencrypt -d openknoxville.org
+docker-compose run --rm letsencrypt letsencrypt certonly --webroot --email info@openknoxville.org --agree-tos -w /var/www/letsencrypt -d data.openknoxville.org
 ```
 
 #. Bring staticfiles.conf back in with `git checkout -- nginx_conf/staticfiles.conf`
