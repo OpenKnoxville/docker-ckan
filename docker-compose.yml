@@ -15,6 +15,7 @@ services:
       - ./nginx_conf:/etc/nginx/conf.d
 
   ckan:
+    restart: always
     container_name: ckan
     build:
       context: ckan/
@@ -31,6 +32,7 @@ services:
       - ckan_storage:/var/lib/ckan
 
   datapusher:
+    restart: always
     container_name: datapusher
     build:
       context: datapusher/
@@ -38,6 +40,7 @@ services:
       - "8800:8800"
 
   db:
+    restart: always
     container_name: db
     build:
       context: postgresql/
@@ -51,11 +54,13 @@ services:
       - pg_data:/var/lib/postgresql/data
 
   solr:
+    restart: always
     container_name: solr
     build:
       context: solr/
 
   redis:
+    restart: always
     container_name: redis
     image: redis:alpine
 
